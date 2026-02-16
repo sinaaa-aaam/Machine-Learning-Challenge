@@ -21,5 +21,6 @@ Veridi Logistics (Olist) experiences late deliveries in approximately 8–12% of
   Dates were converted to datetime with `errors='coerce'` to safely handle invalid values. Missing `review_score` values were imputed using the median (3.0). Non-delivered orders (statuses: canceled, unavailable, invoiced, processing, shipped without delivery date) were flagged as 'Not Delivered' and excluded from percentage-late calculations. Joins were performed carefully (`how='left'` or `how='inner'`) to prevent unintended row duplication.
 
 - **Candidate's Choice Addition**  
-  Implemented a PyTorch neural network to predict churn risk (defined as review_score < 3). Features include delivery delay (`Days_Difference`), customer state, month, and product category. The model achieves ~0.67 AUC on the test set.  
-  **Business value**: This enables proactive identification of high-risk orders — allowing Veridi Logistics to intervene early (e.g., follow-up messages, goodwill gestures, expedited support, or logistics escalation) to potentially reduce negative reviews by 10–20%, improve customer satisfaction, and increase retention in a competitive e-commerce environment.
+ Built a prototype LLM-powered product recommendation engine (using free-tier API).
+The system takes customer state, purchased category, and delivery risk as input, then suggests 3 alternative categories that are more reliable/faster in that region and have higher historical satisfaction.
+Business value: In high-late-risk areas or categories, proactive alternative suggestions can maintain customer trust, reduce disappointment from delays, increase conversion on related items, and indirectly lower churn even when logistics issues occur. This turns a pain point into an upsell/cross-sell opportunity.
